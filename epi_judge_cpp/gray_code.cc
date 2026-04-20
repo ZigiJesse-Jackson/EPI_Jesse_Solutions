@@ -1,15 +1,55 @@
 #include <algorithm>
 #include <vector>
-
+#include <unordered_set>
 #include "test_framework/generic_test.h"
 #include "test_framework/test_failure.h"
 #include "test_framework/timed_executor.h"
 using std::vector;
 
-vector<int> GrayCode(int num_bits) {
-  // TODO - you fill in here.
-  return {};
+bool DiffersByOneBit(int x, int y);
+
+int getBit(int num, int pos){
+  return (num & (1 << pos)) != 0;
 }
+
+int flipBit(int num, int pos){
+  return num ^ (1<<pos);
+}
+
+bool getGrayCode(int num_bits, std::unordered_set<int>* const history, vector<int>* const result){
+  
+  if(result->size()==(1<<num_bits)){
+    return DiffersByOneBit(result->front(), result->back());
+  }
+
+  int previous_code = result->back();
+
+  for(int i = 0; i<num_bits;i++){
+      int num = flipBit(previous_code, i);
+      if(history->find(num)==history->end()){
+        result->push_back(num);
+        history->insert(num);
+        if( getGrayCode(num_bits,  history, result)){
+            return true;
+        }
+        history->erase(num);
+        result->pop_back();    
+      }
+  }
+  return false;
+}
+
+
+vector<int> GrayCode(int num_bits) {
+  // if(0==num_bits) return {0};
+  // if(1==num_bits) return {0,1};
+  std::unordered_set<int> history{0};
+  vector<int> result{0};
+  getGrayCode(num_bits, &history, &result);
+
+  return result;
+}
+
 bool DiffersByOneBit(int x, int y) {
   int bit_difference = x ^ y;
   return bit_difference && !(bit_difference & (bit_difference - 1));
