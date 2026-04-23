@@ -37,7 +37,8 @@ struct pair_equal
 };
 
 bool Solver(vector<vector<int>> *sudoku_grid, std::unordered_map<int, std::unordered_set<int>> &row_map,
-            std::unordered_map<int, std::unordered_set<int>> &col_map, std::unordered_map<std::pair<int, int>, std::unordered_set<int>, pair_hash, pair_equal> &section_map,
+            std::unordered_map<int, std::unordered_set<int>> &col_map,
+            std::unordered_map<std::pair<int, int>, std::unordered_set<int>, pair_hash, pair_equal> &section_map,
             int row, int col)
 {
   if (col >= sudoku_grid->size())
@@ -46,36 +47,28 @@ bool Solver(vector<vector<int>> *sudoku_grid, std::unordered_map<int, std::unord
     if (row >= sudoku_grid->size())
       return true;
   }
-
-  for (int r = row; r < sudoku_grid->size(); r++)
+  if ((*sudoku_grid)[row][col] != 0)
+    return Solver(sudoku_grid, row_map, col_map, section_map, row, col + 1);
+  for (int x = 1; x <= sudoku_grid->size(); x++)
   {
-    for (int c = col; c < sudoku_grid->size(); c++)
+    auto key = std::pair<int, int>(row / 3, col / 3);
+    if (row_map[row].find(x) == row_map[row].end() && col_map[col].find(x) == col_map[col].end() &&
+        section_map[key].find(x) == section_map[key].end())
     {
-      if ((*sudoku_grid)[r][c] != 0)
+      section_map[key].insert(x);
+      row_map[row].insert(x);
+      col_map[col].insert(x);
+      (*sudoku_grid)[row][col] = x;
+
+      if (Solver(sudoku_grid, row_map, col_map, section_map, row, col + 1))
       {
-        continue;
+        return true;
       }
-      else
-      {
-        for (int x = 1; x <= sudoku_grid->size(); x++)
-        {
-          if (row_map[r].find(x) == row_map[r].end() && col_map[c].find(x) == col_map[c].end() &&
-              section_map[std::pair<int, int>(r / 3, c / 3)].find(x) == section_map[std::pair<int, int>(r / 3, c / 3)].end())
-          {
-            section_map[std::pair<int, int>(r / 3, c / 3)].insert(x);
-            row_map[r].insert(x);
-            col_map[c].insert(x);
-            if (Solver(sudoku_grid, row_map, col_map, section_map, r, c + 1))
-            {
-              (*sudoku_grid)[r][c] = x;
-              return true;
-            }
-            section_map[std::pair<int, int>(r / 3, c / 3)].erase(x);
-            row_map[r].erase(x);
-            col_map[c].erase(x);
-          }
-        }
-      }
+      (*sudoku_grid)[row][col] = 0;
+
+      section_map[key].erase(x);
+      row_map[row].erase(x);
+      col_map[col].erase(x);
     }
   }
 
@@ -87,19 +80,26 @@ bool SolveSudoku(vector<vector<int>> *partial_assignment)
   std::unordered_map<int, std::unordered_set<int>> row_map;
   std::unordered_map<int, std::unordered_set<int>> col_map;
   std::unordered_map<std::pair<int, int>, std::unordered_set<int>, pair_hash, pair_equal> section_map;
+  bool isAlreadySolved = true;
   for (int r = 0; r < partial_assignment->size(); r++)
   {
     for (int c = 0; c < partial_assignment->size(); c++)
     {
       int x = (*partial_assignment)[r][c];
-      if ((*partial_assignment)[r][c] != 0)
+      if (x != 0)
       {
         section_map[std::pair<int, int>(r / 3, c / 3)].insert(x);
         row_map[r].insert(x);
         col_map[c].insert(x);
       }
+      else if (isAlreadySolved)
+      {
+        isAlreadySolved = false;
+      }
     }
   }
+  if (isAlreadySolved)
+    return true;
   return Solver(partial_assignment, row_map, col_map, section_map, 0, 0);
 }
 
