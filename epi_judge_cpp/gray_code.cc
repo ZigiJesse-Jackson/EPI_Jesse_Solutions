@@ -41,8 +41,6 @@ bool getGrayCode(int num_bits, std::unordered_set<int>* const history, vector<in
 
 
 vector<int> GrayCode(int num_bits) {
-  // if(0==num_bits) return {0};
-  // if(1==num_bits) return {0,1};
   std::unordered_set<int> history{0};
   vector<int> result{0};
   getGrayCode(num_bits, &history, &result);
