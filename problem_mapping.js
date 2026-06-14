@@ -2106,7 +2106,7 @@ problem_mapping = {
         },
         "15.11 Compute a Gray code": {
             "C++: gray_code.cc": {
-                "passed": 0,
+                "passed": 10,
                 "total": 10
             },
             "Java: GrayCode.java": {
@@ -2148,7 +2148,7 @@ problem_mapping = {
         },
         "16.01 Count the number of score combinations": {
             "C++: number_of_score_combinations.cc": {
-                "passed": 0,
+                "passed": 1003,
                 "total": 1003
             },
             "Java: NumberOfScoreCombinations.java": {
@@ -2176,7 +2176,7 @@ problem_mapping = {
         },
         "16.03 Count the number of ways to traverse a 2D array": {
             "C++: number_of_traversals_matrix.cc": {
-                "passed": 0,
+                "passed": 1775,
                 "total": 1775
             },
             "Java: NumberOfTraversalsMatrix.java": {
@@ -2190,7 +2190,7 @@ problem_mapping = {
         },
         "16.04 Compute the binomial coefficients": {
             "C++: binomial_coefficients.cc": {
-                "passed": 0,
+                "passed": 5906,
                 "total": 5906
             },
             "Java: BinomialCoefficients.java": {
@@ -2204,7 +2204,7 @@ problem_mapping = {
         },
         "16.05 Search for a sequence in a 2D array": {
             "C++: is_string_in_matrix.cc": {
-                "passed": 0,
+                "passed": 186,
                 "total": 186
             },
             "Java: IsStringInMatrix.java": {
@@ -2260,7 +2260,7 @@ problem_mapping = {
         },
         "16.09 Pick up coins for maximum gain": {
             "C++: picking_up_coins.cc": {
-                "passed": 0,
+                "passed": 162,
                 "total": 162
             },
             "Java: PickingUpCoins.java": {
