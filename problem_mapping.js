@@ -2078,7 +2078,7 @@ problem_mapping = {
         },
         "15.09 Generate binary trees": {
             "C++: enumerate_trees.cc": {
-                "passed": 0,
+                "passed": 10,
                 "total": 10
             },
             "Java: EnumerateTrees.java": {
@@ -2092,7 +2092,7 @@ problem_mapping = {
         },
         "15.10 Implement a Sudoku solver": {
             "C++: sudoku_solve.cc": {
-                "passed": 0,
+                "passed": 400,
                 "total": 400
             },
             "Java: SudokuSolve.java": {
@@ -2218,7 +2218,7 @@ problem_mapping = {
         },
         "16.06 The knapsack problem": {
             "C++: knapsack.cc": {
-                "passed": 0,
+                "passed": 100,
                 "total": 100
             },
             "Java: Knapsack.java": {
@@ -2232,7 +2232,7 @@ problem_mapping = {
         },
         "16.07 Building a search index for domains": {
             "C++: is_string_decomposable_into_words.cc": {
-                "passed": 0,
+                "passed": 41,
                 "total": 41
             },
             "Java: IsStringDecomposableIntoWords.java": {
@@ -2246,7 +2246,7 @@ problem_mapping = {
         },
         "16.08 Find the minimum weight path in a triangle": {
             "C++: minimum_weight_path_in_a_triangle.cc": {
-                "passed": 0,
+                "passed": 101,
                 "total": 101
             },
             "Java: MinimumWeightPathInATriangle.java": {
