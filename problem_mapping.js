@@ -2078,7 +2078,7 @@ problem_mapping = {
         },
         "15.09 Generate binary trees": {
             "C++: enumerate_trees.cc": {
-                "passed": 0,
+                "passed": 10,
                 "total": 10
             },
             "Java: EnumerateTrees.java": {
@@ -2092,7 +2092,7 @@ problem_mapping = {
         },
         "15.10 Implement a Sudoku solver": {
             "C++: sudoku_solve.cc": {
-                "passed": 0,
+                "passed": 400,
                 "total": 400
             },
             "Java: SudokuSolve.java": {
@@ -2218,7 +2218,7 @@ problem_mapping = {
         },
         "16.06 The knapsack problem": {
             "C++: knapsack.cc": {
-                "passed": 0,
+                "passed": 100,
                 "total": 100
             },
             "Java: Knapsack.java": {
@@ -2260,7 +2260,7 @@ problem_mapping = {
         },
         "16.09 Pick up coins for maximum gain": {
             "C++: picking_up_coins.cc": {
-                "passed": 0,
+                "passed": 162,
                 "total": 162
             },
             "Java: PickingUpCoins.java": {
