@@ -2246,7 +2246,7 @@ problem_mapping = {
         },
         "16.08 Find the minimum weight path in a triangle": {
             "C++: minimum_weight_path_in_a_triangle.cc": {
-                "passed": 0,
+                "passed": 101,
                 "total": 101
             },
             "Java: MinimumWeightPathInATriangle.java": {
