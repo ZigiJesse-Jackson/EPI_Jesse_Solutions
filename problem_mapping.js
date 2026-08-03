@@ -2288,7 +2288,7 @@ problem_mapping = {
         },
         "16.11 The pretty printing problem": {
             "C++: pretty_printing.cc": {
-                "passed": 0,
+                "passed": 102,
                 "total": 102
             },
             "Java: PrettyPrinting.java": {
