@@ -2274,7 +2274,7 @@ problem_mapping = {
         },
         "16.10 Count the number of moves to climb stairs": {
             "C++: number_of_traversals_staircase.cc": {
-                "passed": 0,
+                "passed": 546,
                 "total": 546
             },
             "Java: NumberOfTraversalsStaircase.java": {
