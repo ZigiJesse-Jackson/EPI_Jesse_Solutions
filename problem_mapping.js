@@ -2302,7 +2302,7 @@ problem_mapping = {
         },
         "16.12 Find the longest nondecreasing subsequence": {
             "C++: longest_nondecreasing_subsequence.cc": {
-                "passed": 0,
+                "passed": 200,
                 "total": 200
             },
             "Java: LongestNondecreasingSubsequence.java": {
