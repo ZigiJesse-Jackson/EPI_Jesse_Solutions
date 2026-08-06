@@ -2346,7 +2346,7 @@ problem_mapping = {
         },
         "17.02 Schedule to minimize waiting time": {
             "C++: minimum_waiting_time.cc": {
-                "passed": 0,
+                "passed": 501,
                 "total": 501
             },
             "Java: MinimumWaitingTime.java": {
