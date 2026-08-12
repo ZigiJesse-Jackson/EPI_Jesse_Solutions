@@ -2360,7 +2360,7 @@ problem_mapping = {
         },
         "17.03 The interval covering problem": {
             "C++: minimum_points_covering_intervals.cc": {
-                "passed": 0,
+                "passed": 103,
                 "total": 103
             },
             "C++: two_sum.cc": {
