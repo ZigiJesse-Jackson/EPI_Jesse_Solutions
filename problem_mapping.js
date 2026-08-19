@@ -2400,7 +2400,7 @@ problem_mapping = {
         },
         "17.05 Find the majority element": {
             "C++: majority_element.cc": {
-                "passed": 0,
+                "passed": 201,
                 "total": 201
             },
             "Java: MajorityElement.java": {
@@ -2414,7 +2414,7 @@ problem_mapping = {
         },
         "17.06 The gasup problem": {
             "C++: refueling_schedule.cc": {
-                "passed": 0,
+                "passed": 202,
                 "total": 202
             },
             "Java: RefuelingSchedule.java": {
@@ -2428,7 +2428,7 @@ problem_mapping = {
         },
         "17.07 Compute the maximum water trapped by a pair of vertical lines": {
             "C++: max_trapped_water.cc": {
-                "passed": 0,
+                "passed": 204,
                 "total": 204
             },
             "Java: MaxTrappedWater.java": {
@@ -2442,7 +2442,7 @@ problem_mapping = {
         },
         "17.08 Compute the largest rectangle under the skyline": {
             "C++: largest_rectangle_under_skyline.cc": {
-                "passed": 0,
+                "passed": 1004,
                 "total": 1004
             },
             "Java: LargestRectangleUnderSkyline.java": {
