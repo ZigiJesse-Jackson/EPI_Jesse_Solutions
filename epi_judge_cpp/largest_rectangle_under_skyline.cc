@@ -16,7 +16,9 @@ int CalculateLargestRectangle(const vector<int> &heights)
 
   for (int i = 0; i <= heights.size(); i++)
   {
-    // met another anchor whose height is the same as the last tracked anchor so we ignore it
+    // met another anchor whose height is the same as the last tracked anchor so we replace
+    // earlier anchor. This enables us to keep the valid left endpoint for the next rectangle anchored
+    // at a different height.
     if (!anchor_indices.empty() && i < heights.size() && heights[i] == heights[anchor_indices.top()])
     {
       anchor_indices.pop();
