@@ -2274,7 +2274,7 @@ problem_mapping = {
         },
         "16.10 Count the number of moves to climb stairs": {
             "C++: number_of_traversals_staircase.cc": {
-                "passed": 0,
+                "passed": 546,
                 "total": 546
             },
             "Java: NumberOfTraversalsStaircase.java": {
@@ -2288,7 +2288,7 @@ problem_mapping = {
         },
         "16.11 The pretty printing problem": {
             "C++: pretty_printing.cc": {
-                "passed": 0,
+                "passed": 102,
                 "total": 102
             },
             "Java: PrettyPrinting.java": {
@@ -2302,7 +2302,7 @@ problem_mapping = {
         },
         "16.12 Find the longest nondecreasing subsequence": {
             "C++: longest_nondecreasing_subsequence.cc": {
-                "passed": 0,
+                "passed": 200,
                 "total": 200
             },
             "Java: LongestNondecreasingSubsequence.java": {
@@ -2332,7 +2332,7 @@ problem_mapping = {
         },
         "17.01 Compute an optimum assignment of tasks": {
             "C++: task_pairing.cc": {
-                "passed": 0,
+                "passed": 500,
                 "total": 500
             },
             "Java: TaskPairing.java": {
@@ -2346,7 +2346,7 @@ problem_mapping = {
         },
         "17.02 Schedule to minimize waiting time": {
             "C++: minimum_waiting_time.cc": {
-                "passed": 0,
+                "passed": 501,
                 "total": 501
             },
             "Java: MinimumWaitingTime.java": {
@@ -2360,7 +2360,7 @@ problem_mapping = {
         },
         "17.03 The interval covering problem": {
             "C++: minimum_points_covering_intervals.cc": {
-                "passed": 0,
+                "passed": 103,
                 "total": 103
             },
             "C++: two_sum.cc": {
@@ -2386,7 +2386,7 @@ problem_mapping = {
         },
         "17.04 The 3-sum problem": {
             "C++: three_sum.cc": {
-                "passed": 0,
+                "passed": 1008,
                 "total": 1008
             },
             "Java: ThreeSum.java": {
@@ -2400,7 +2400,7 @@ problem_mapping = {
         },
         "17.05 Find the majority element": {
             "C++: majority_element.cc": {
-                "passed": 0,
+                "passed": 201,
                 "total": 201
             },
             "Java: MajorityElement.java": {
@@ -2414,7 +2414,7 @@ problem_mapping = {
         },
         "17.06 The gasup problem": {
             "C++: refueling_schedule.cc": {
-                "passed": 0,
+                "passed": 202,
                 "total": 202
             },
             "Java: RefuelingSchedule.java": {
@@ -2428,7 +2428,7 @@ problem_mapping = {
         },
         "17.07 Compute the maximum water trapped by a pair of vertical lines": {
             "C++: max_trapped_water.cc": {
-                "passed": 0,
+                "passed": 204,
                 "total": 204
             },
             "Java: MaxTrappedWater.java": {
@@ -2442,7 +2442,7 @@ problem_mapping = {
         },
         "17.08 Compute the largest rectangle under the skyline": {
             "C++: largest_rectangle_under_skyline.cc": {
-                "passed": 0,
+                "passed": 1004,
                 "total": 1004
             },
             "Java: LargestRectangleUnderSkyline.java": {
