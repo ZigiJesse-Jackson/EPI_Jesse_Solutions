@@ -1,53 +1,97 @@
 #include <stdexcept>
 #include <vector>
+#include <queue>
 
 #include "test_framework/generic_test.h"
 #include "test_framework/serialization_traits.h"
 #include "test_framework/timed_executor.h"
 using std::vector;
 
-struct GraphVertex {
+struct GraphVertex
+{
   int d = -1;
-  vector<GraphVertex*> edges;
+  vector<GraphVertex *> edges;
 };
 
-bool IsAnyPlacementFeasible(vector<GraphVertex>* graph) {
-  // TODO - you fill in here.
+bool IsAnyPlacementFeasible(vector<GraphVertex> *graph)
+{
+  for (auto node : *graph)
+  {
+    if (node.d > -1)
+    {
+      continue;
+    }
+    std::queue<GraphVertex *> q;
+
+    node.d++;
+    q.emplace(&node);
+
+    while (!q.empty())
+    {
+      auto curr = q.front();
+
+      q.pop();
+      for (auto edge : curr->edges)
+      {
+        if (edge->d == -1)
+        {
+          edge->d = curr->d + 1;
+          q.push(edge);
+        }
+        else if (edge->d == curr->d)
+        {
+          return false;
+        }
+      }
+    }
+  }
+
   return true;
 }
-struct Edge {
+struct Edge
+{
   int from;
   int to;
 };
 
-namespace test_framework {
-template <>
-struct SerializationTrait<Edge> : UserSerTrait<Edge, int, int> {};
-}  // namespace test_framework
+namespace test_framework
+{
+  template <>
+  struct SerializationTrait<Edge> : UserSerTrait<Edge, int, int>
+  {
+  };
+} // namespace test_framework
 
-bool IsAnyPlacementFeasibleWrapper(TimedExecutor& executor, int k,
-                                   const vector<Edge>& edges) {
+bool IsAnyPlacementFeasibleWrapper(TimedExecutor &executor, int k,
+                                   const vector<Edge> &edges)
+{
   vector<GraphVertex> graph;
-  if (k <= 0) {
+  if (k <= 0)
+  {
     throw std::runtime_error("Invalid k value");
   }
   graph.reserve(k);
 
-  for (int i = 0; i < k; i++) {
+  for (int i = 0; i < k; i++)
+  {
     graph.push_back(GraphVertex{});
   }
 
-  for (auto& e : edges) {
-    if (e.from < 0 || e.from >= k || e.to < 0 || e.to >= k) {
+  for (auto &e : edges)
+  {
+    if (e.from < 0 || e.from >= k || e.to < 0 || e.to >= k)
+    {
       throw std::runtime_error("Invalid vertex index");
     }
     graph[e.from].edges.push_back(&graph[e.to]);
   }
 
-  return executor.Run([&] { return IsAnyPlacementFeasible(&graph); });
+  return executor.Run([&]
+                      { return IsAnyPlacementFeasible(&graph); });
 }
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[])
+{
   std::vector<std::string> args{argv + 1, argv + argc};
   std::vector<std::string> param_names{"executor", "k", "edges"};
   return GenericTestMain(

@@ -2528,7 +2528,7 @@ problem_mapping = {
         },
         "18.06 Making wired connections": {
             "C++: is_circuit_wirable.cc": {
-                "passed": 0,
+                "passed": 85,
                 "total": 85
             },
             "Java: IsCircuitWirable.java": {
