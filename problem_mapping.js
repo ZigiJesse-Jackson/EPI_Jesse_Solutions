@@ -2556,7 +2556,7 @@ problem_mapping = {
         },
         "18.08 Team photo day---2": {
             "C++: max_teams_in_photograph.cc": {
-                "passed": 0,
+                "passed": 69,
                 "total": 69
             },
             "Java: MaxTeamsInPhotograph.java": {

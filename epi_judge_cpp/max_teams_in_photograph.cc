@@ -6,45 +6,96 @@
 #include "test_framework/timed_executor.h"
 using std::vector;
 
-struct GraphVertex {
-  vector<GraphVertex*> edges;
+struct GraphVertex
+{
+  vector<GraphVertex *> edges;
   // Set max_distance = 0 to indicate unvisited vertex.
-  int max_distance = 0;
+  int max_distance = 1;
+  bool visited = false;
 };
 
-int FindLargestNumberTeams(vector<GraphVertex>* graph) {
-  // TODO - you fill in here.
-  return 0;
+void DFS(GraphVertex *v, vector<GraphVertex *> &stack)
+{
+  if (v->visited)
+    return;
+  v->visited = true;
+  for (GraphVertex *adj : v->edges)
+  {
+    if (!adj->visited)
+    {
+      DFS(adj, stack);
+    }
+  }
+  stack.emplace_back(v);
 }
-struct Edge {
+
+vector<GraphVertex *> TopologicalSort(vector<GraphVertex> *graph)
+{
+  vector<GraphVertex *> stack;
+  for (GraphVertex &v : *graph)
+  {
+    DFS(&v, stack);
+  }
+  return stack;
+}
+
+int FindLargestNumberTeams(vector<GraphVertex> *graph)
+{
+  int max_path = INT_MIN;
+  vector<GraphVertex *> stack = TopologicalSort(graph);
+
+  while (!stack.empty())
+  {
+    auto curr = stack.back();
+    stack.pop_back();
+    max_path = std::max(max_path, curr->max_distance);
+
+    for (GraphVertex *adj : curr->edges)
+    {
+      adj->max_distance = std::max(curr->max_distance + 1, adj->max_distance);
+    }
+  }
+  return max_path;
+}
+struct Edge
+{
   int from;
   int to;
 };
 
-namespace test_framework {
-template <>
-struct SerializationTrait<Edge> : UserSerTrait<Edge, int, int> {};
-}  // namespace test_framework
+namespace test_framework
+{
+  template <>
+  struct SerializationTrait<Edge> : UserSerTrait<Edge, int, int>
+  {
+  };
+} // namespace test_framework
 
-int FindLargestNumberTeamsWrapper(TimedExecutor& executor, int k,
-                                  const vector<Edge>& edges) {
-  if (k <= 0) {
+int FindLargestNumberTeamsWrapper(TimedExecutor &executor, int k,
+                                  const vector<Edge> &edges)
+{
+  if (k <= 0)
+  {
     throw std::runtime_error("Invalid k value");
   }
 
   vector<GraphVertex> graph(k, GraphVertex{});
 
-  for (const Edge& e : edges) {
-    if (e.from < 0 || e.from >= k || e.to < 0 || e.to >= k) {
+  for (const Edge &e : edges)
+  {
+    if (e.from < 0 || e.from >= k || e.to < 0 || e.to >= k)
+    {
       throw std::runtime_error("Invalid vertex index");
     }
     graph[e.from].edges.push_back(&graph[e.to]);
   }
 
-  return executor.Run([&] { return FindLargestNumberTeams(&graph); });
+  return executor.Run([&]
+                      { return FindLargestNumberTeams(&graph); });
 }
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[])
+{
   std::vector<std::string> args{argv + 1, argv + argc};
   std::vector<std::string> param_names{"executor", "k", "edges"};
   return GenericTestMain(
